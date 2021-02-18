@@ -5,6 +5,10 @@ const sequelize = new Sequelize({
     storage: 'movies.db'
 });
 
+// Movie model
+class Movie extends Sequelize.Model {}
+Movie.init();
+
 //async IIFE
 (async () => {
     try {
