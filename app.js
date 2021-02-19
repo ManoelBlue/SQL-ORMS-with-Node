@@ -34,6 +34,9 @@ Movie.init({
     });
     console.log(movie2.toJSON());
 
+    // Obs.: creating a var for each row is not needed
+    // but was used for logging as a json
+
     // Test the connection:
     // try {
         // returns a promise that resolves to a successful,
