@@ -54,8 +54,8 @@ const { Person } = db.models;
         console.log(movieByRuntime.toJSON());
 
         // returns an array with all instances
-        const movies = await Movie.findAll();
-        console.log(movies.map(movie => movie.toJSON()));
+        // const movies = await Movie.findAll();
+        // console.log(movies.map(movie => movie.toJSON()));
 
         const people = await Person.findAll({
             // can receive multiple porperties
@@ -65,6 +65,14 @@ const { Person } = db.models;
             }
         });
         console.log(people.map(movie => movie.toJSON()));
+
+        const movies = await Movie.findAll({
+            attributes: ['id', 'title'], // return only id and title
+            where: {
+                isAvailableOnVHS: true,
+            },
+        });
+        console.log( movies.map(movie => movie.toJSON()) );
 
     } catch (error) {
         // console.error('Error connecting to the database: ', error);
