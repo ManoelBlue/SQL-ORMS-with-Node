@@ -1,5 +1,6 @@
 const db = require('./db');
 const { Movie } = db.models;
+const { Person } = db.models;
 
 (async () => {
     await db.sequelize.sync({ force: true });
@@ -20,6 +21,12 @@ const { Movie } = db.models;
             isAvailableOnVHS: true,
         });
         console.log(movie2.toJSON());
+
+        const person = await Person.create({
+            firstName: 'Manoel',
+            lastName: 'Blue',
+        });
+        console.log(person.toJSON());
 
     } catch (error) {
         // console.error('Error connecting to the database: ', error);
