@@ -20,13 +20,20 @@ Movie.init({
     // to force sync of all models:
     // await sequelize.sync({force: true});
 
+    // Instance of the Movie class represents a db row
+    const movie = await Movie.create({
+        title: 'Caramuru',
+    });
+
+    console.log(movie.toJSON());
+
     // Test the connection:
-    try {
+    // try {
         // returns a promise that resolves to a successful,
         // authenticated connection to the database:
-        await sequelize.authenticate();
-        console.log('Connection to the database successful!');
-    } catch (error) {
-        console.error('Error connecting to the database: ', error);
-    }
+    //     await sequelize.authenticate();
+    //     console.log('Connection to the database successful!');
+    // } catch (error) {
+    //     console.error('Error connecting to the database: ', error);
+    // }
 }) ();
