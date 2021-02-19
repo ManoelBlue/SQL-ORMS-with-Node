@@ -82,6 +82,7 @@ const { Op } = db.Sequelize;
                     // [Op.between]: [75, 115] // range
                 },
             },
+            order: [['id', 'DESC']] // IDs in descending order
         });
         console.log( movies.map(movie => movie.toJSON()) );
 
