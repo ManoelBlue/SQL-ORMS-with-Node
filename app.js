@@ -86,6 +86,27 @@ const { Op } = db.Sequelize;
         });
         console.log( movies.map(movie => movie.toJSON()) );
 
+        // Updating a row:
+        // first find and then update the collumn
+        // finally save
+        const toyStory3 = await Movie.findByPk(3);
+        toyStory3.title = 'Toy Story 3';
+        await toyStory3.save();
+
+        // using update method
+        // does not require the save method
+        // await toyStory3.update({
+        //     isAvailableOnVHS: true,
+        // });
+
+        // await toyStory3.update({
+        //     title: 'Trinket Tale 3',
+        //     isAvailableOnVHS: true,
+        // }, { fields: ['title', 'isAvailableOnVHS'] }); // specifies which columns should be updated
+
+        // converting an instance or collection of instances to json
+        // console.log( toyStory3.get({ plain: true }) );
+
     } catch (error) {
         // console.error('Error connecting to the database: ', error);
         if (error.name === 'SequelizeValidationError') {
