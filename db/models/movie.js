@@ -10,21 +10,25 @@ module.exports = (sequelize) => {
             autoIncrement: true,
         },
         title: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
             // by default 255 length
             // to change: Sequelize.STRING(500)
+            allowNull: false, // disallow null
         },
         runtime: {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            allowNull: false, // disallow null
         },
         releaseDate: {
-            type: Sequelize.DATEONLY
+            type: Sequelize.DATEONLY,
             // Obs.:
             // type DATE => yyyy-mm-dd hh:mm:ss format
             // type DATEONLY => yyyy-mm-dd
+            allowNull: false, // disallow null
         },
         isAvailableOnVHS: {
-            type: Sequelize.BOOLEAN
+            type: Sequelize.BOOLEAN,
+            allowNull: false, // disallow null
         },
     }, { sequelize });
 
