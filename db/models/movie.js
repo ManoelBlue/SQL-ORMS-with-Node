@@ -50,6 +50,11 @@ module.exports = (sequelize) => {
                 notNull: {
                     msg: 'Please provide a value for "title"',
                 },
+                isAfter: { // equals or higher
+                    args: '1895-12-27',
+                    msg: 'Please provide a value on or after "1895-12-28" for "releaseDate"',
+                },
+                // There is also the isBefore property
             },
         },
         isAvailableOnVHS: {
