@@ -6,6 +6,8 @@ const { Person } = db.models;
     await db.sequelize.sync({ force: true });
 
     try {
+        // New instance with create method
+        // useful for express POST, for ex
         const movie = await Movie.create({
             title: 'Toy Story',
             runtime: 81,
@@ -27,6 +29,20 @@ const { Person } = db.models;
             lastName: 'Blue',
         });
         console.log(person.toJSON());
+
+        // New instance: build method only builds it
+        // build also gets default values in case not defined
+        // creates data in memory, but do not save to the db
+        // allows instace modification
+        const movie3 = await Movie.build({
+            title: 'Toy Story 3',
+            runtime: 103,
+            releaseDate: '2010-06-18',
+            isAvailableOnVHS: false,
+        });
+        movie3.title = 'Updated Title'; // modifying instance
+        await movie3.save(); // save the record
+        console.log(movie3.toJSON());
 
     } catch (error) {
         // console.error('Error connecting to the database: ', error);
