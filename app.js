@@ -18,16 +18,21 @@ Movie.init({
 (async () => {
     // Sync 'Movies' table
     // refresh db everytime app starts:
-    await Movie.sync();
+    // await Movie.sync();
     // to force sync of all models:
-    // await sequelize.sync({force: true});
+    await sequelize.sync({force: true});
 
     // Instance of the Movie class represents a db row
     const movie = await Movie.create({
         title: 'Caramuru',
     });
-
     console.log(movie.toJSON());
+
+    // New row:
+    const movie2 = await Movie.create({
+        title: 'Bacurau',
+    });
+    console.log(movie2.toJSON());
 
     // Test the connection:
     // try {
