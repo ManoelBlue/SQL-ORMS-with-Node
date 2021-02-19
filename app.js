@@ -14,6 +14,13 @@ Movie.init({
 
 //async IIFE
 (async () => {
+    // Sync 'Movies' table
+    // refresh db everytime app starts:
+    await Movie.sync();
+    // to force sync of all models:
+    // await sequelize.sync({force: true});
+
+    // Test the connection:
     try {
         // returns a promise that resolves to a successful,
         // authenticated connection to the database:
