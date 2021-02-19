@@ -32,6 +32,12 @@ module.exports = (sequelize) => {
                 notNull: {
                     msg: 'Please provide a value for "title"',
                 },
+                min: {
+                    args: 1,
+                    msg: 'Please provide a value greater than "0" for "runtime"',
+                },
+                // there is also the max property
+                // checks if value is <=
             },
         },
         releaseDate: {
