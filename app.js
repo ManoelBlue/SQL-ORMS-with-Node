@@ -22,20 +22,24 @@ Movie.init({
     // to force sync of all models:
     await sequelize.sync({force: true});
 
-    // Instance of the Movie class represents a db row
-    const movie = await Movie.create({
-        title: 'Caramuru',
-    });
-    console.log(movie.toJSON());
-
-    // New row:
-    const movie2 = await Movie.create({
-        title: 'Bacurau',
-    });
-    console.log(movie2.toJSON());
-
-    // Obs.: creating a var for each row is not needed
-    // but was used for logging as a json
+    try {
+        // Instance of the Movie class represents a db row
+        const movie = await Movie.create({
+            title: 'Caramuru',
+        });
+        console.log(movie.toJSON());
+    
+        // New row:
+        const movie2 = await Movie.create({
+            title: 'Bacurau',
+        });
+        console.log(movie2.toJSON());
+    
+        // Obs.: creating a var for each row is not needed
+        // but was used for logging as a json
+    } catch (error) {
+        console.error('Error connecting to the db: ', error);
+    }
 
     // Test the connection:
     // try {
