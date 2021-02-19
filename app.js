@@ -7,7 +7,10 @@ const sequelize = new Sequelize({
 
 // Movie model
 class Movie extends Sequelize.Model {}
-Movie.init();
+// creates a table Movies (automatically goes to plural)
+Movie.init({
+    title: Sequelize.STRING
+}, {sequelize});
 
 //async IIFE
 (async () => {
