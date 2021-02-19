@@ -44,6 +44,15 @@ const { Person } = db.models;
         await movie3.save(); // save the record
         console.log(movie3.toJSON());
 
+        // retrieves a single instance by its primary key (or id)
+        const movieById = await Movie.findByPk(1);
+        console.log(movieById.toJSON());
+
+        // finds and retrieves one specific element in a table
+        // only the first matching record
+        const movieByRuntime = await Movie.findOne({ where: { runtime: 115 } });
+        console.log(movieByRuntime.toJSON());
+
     } catch (error) {
         // console.error('Error connecting to the database: ', error);
         if (error.name === 'SequelizeValidationError') {
