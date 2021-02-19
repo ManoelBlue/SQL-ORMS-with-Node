@@ -3,6 +3,12 @@ const Sequelize = require('sequelize');
 module.exports = (sequelize) => {
     class Movie extends Sequelize.Model {}
     Movie.init({
+        // Set custom primary key column
+        id: {
+            type: Sequelize.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+        },
         title: {
             type: Sequelize.STRING
             // by default 255 length
