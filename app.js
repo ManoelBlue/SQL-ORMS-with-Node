@@ -53,6 +53,19 @@ const { Person } = db.models;
         const movieByRuntime = await Movie.findOne({ where: { runtime: 115 } });
         console.log(movieByRuntime.toJSON());
 
+        // returns an array with all instances
+        const movies = await Movie.findAll();
+        console.log(movies.map(movie => movie.toJSON()));
+
+        const people = await Person.findAll({
+            // can receive multiple porperties
+            // like an AND condition
+            where: {
+                lastName: 'Blue'
+            }
+        });
+        console.log(people.map(movie => movie.toJSON()));
+
     } catch (error) {
         // console.error('Error connecting to the database: ', error);
         if (error.name === 'SequelizeValidationError') {
