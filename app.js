@@ -1,6 +1,7 @@
 const db = require('./db');
-const { Movie } = db.models;
-const { Person } = db.models;
+const { Movie, Person } = db.models;
+const { Op } = db.Sequelize;
+
 
 (async () => {
     await db.sequelize.sync({ force: true });
@@ -69,7 +70,17 @@ const { Person } = db.models;
         const movies = await Movie.findAll({
             attributes: ['id', 'title'], // return only id and title
             where: {
-                isAvailableOnVHS: true,
+                // isAvailableOnVHS: true,
+                title: {
+                    [Op.endsWith]: 'story'
+                },
+                releaseDate: {
+                    [Op.gte]: '2004-01-01' // greater than or equal to the date
+                },
+                runtime: {
+                    [Op.gt]: 95, // greater than 95
+                    // [Op.between]: [75, 115] // range
+                },
             },
         });
         console.log( movies.map(movie => movie.toJSON()) );
